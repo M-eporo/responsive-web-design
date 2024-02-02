@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/* base */
+body {
+  margin: 0;
+  background-color: #eee;
+}
+
+/* header */
+header {
+  height: 112px;
+  background-color: #fff;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height:100%;
+}
+
+
+/*font-family: 'Montserrat', sans-serif;
+
+*/
