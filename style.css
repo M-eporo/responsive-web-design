@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 /* base */
+:root {
+  --v-space: clamp(90px, 9vw, 120px);
+}
 body {
   margin: 0;
   background-color: #eee;
@@ -8,8 +11,10 @@ body {
   font-family: sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, figure {
+h1, h2, h3, h4, h5, h6, figure, ul {
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 p {
@@ -44,9 +49,12 @@ header {
   align-items: center;
   height:100%;
 }
+
+/* 横幅と左右の余白 */
 .w-container {
   width: min(92%, 1166px);
   margin: 0 auto;
+  position: relative;
 }
 
 .navbtn {
@@ -168,6 +176,138 @@ header {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
 }
+
+/* posts */
+
+.posts {
+  padding: var(--v-space) 0;
+  background-color: #f3f1ed;
+}
+
+.heading {
+  position: absolute;
+  top: calc((var(--v-space) + 0.6em) * -1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(40px, 5.2vw, 70px);
+  min-height: 0vw;
+  font-weight: 300;
+}
+
+.heading span {
+  display: block;
+  color: #666666;
+  font-size: 18px;
+}
+
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 25px;
+}
+
+@media(min-width: 768px){
+  .posts-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.post img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  width: 100%;
+}
+
+@supports not (aspect-ratio: 3 / 2){
+  .post img {
+    height: 180px;
+  }
+}
+
+.posts a {
+  display: block;
+}
+
+.post h3 {
+  margin: 1em 0 0.5em;
+  font-size: clamp(12px, 2vw ,20px);
+  min-height: 0vw;
+}
+
+.post p {
+  max-width: 20em;
+  font-size: clamp(10px, 1.6vw, 14px);
+  min-height: 0vw;
+}
+
+/* footer */
+
+.footer {
+  padding: 70px 0;
+  background-color: #fff;
+  color: #707070;
+  font-size: 13px;
+}
+
+.footer-container {
+  display: grid;
+  gap: 50px;
+  justify-items: center;
+}
+
+@media (min-width: 768px){
+  .footer-container {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+  }
+
+  .footer-container > .footer-site {
+    margin-bottom: 20px;
+  }
+
+  .footer-container > *:not(.footer-sns){
+    justify-self: start;
+  }
+
+  .footer-container > .footer-sns {
+    grid-column: 2;
+    grid-row: 1/4;
+    /*grid-area: 1/2/4/3*/
+    justify-self: end;
+    align-self: center;
+  }
+}
+
+.footer-sns {
+  display: flex;
+  gap: 24px;
+  font-size: 24px;
+}
+
+.footer-sns a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  background-color: #ccc;
+  color: #fff;
+  clip-path: circle(50%);
+  aspect-ratio: 1 / 1;
+}
+
+@supports not(aspect-ratio: 1 / 1){
+  .footer-sns a {
+    height: 36px;
+  }
+}
+
+.footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+
 /*font-family: 'Montserrat', sans-serif;
 
 */
